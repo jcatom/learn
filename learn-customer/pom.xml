@@ -22,6 +22,16 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cc.jml1024.learn.api</groupId>
+            <artifactId>learn-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
