@@ -1,5 +1,5 @@
 learn-service/target/
 learn-customer/target/
 learn-api/target/
-learn-eureka/
+learn-eureka/target/
 *.iml
