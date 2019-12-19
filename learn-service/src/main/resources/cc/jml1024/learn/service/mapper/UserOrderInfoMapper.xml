@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.jml1024.learn.service.dao.UserOrderInfoMapper">
+  <resultMap id="BaseResultMap" type="cc.jml1024.learn.service.domain.UserOrderInfo">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="STATION_ID" jdbcType="VARCHAR" property="stationId" />
+    <result column="BET_NUMBER" jdbcType="VARCHAR" property="betNumber" />
+    <result column="BET_TIME" jdbcType="TIMESTAMP" property="betTime" />
+    <result column="BET_MONEY" jdbcType="VARCHAR" property="betMoney" />
+    <result column="BET_ISSUE" jdbcType="VARCHAR" property="betIssue" />
+    <result column="GAME_ID" jdbcType="VARCHAR" property="gameId" />
+    <result column="BET_RESULT" jdbcType="VARCHAR" property="betResult" />
+    <result column="BET_MULTI" jdbcType="VARCHAR" property="betMulti" />
+    <result column="TERMINAL_CORRECT_COUNT" jdbcType="INTEGER" property="terminalCorrectCount" />
+    <result column="TICK_SN" jdbcType="VARCHAR" property="tickSn" />
+    <result column="TIME_STAMP" jdbcType="VARCHAR" property="timeStamp" />
+    <result column="MAC_CODE" jdbcType="VARCHAR" property="macCode" />
+    <result column="CORRECT_STATUS" jdbcType="VARCHAR" property="correctStatus" />
+    <result column="CORRECT_TIME" jdbcType="TIMESTAMP" property="correctTime" />
+    <result column="CORRECT_COUNT" jdbcType="INTEGER" property="correctCount" />
+    <result column="AGENCY_RATE" jdbcType="DECIMAL" property="agencyRate" />
+    <result column="PERCENTAGE" jdbcType="DECIMAL" property="percentage" />
+    <result column="EMPLOYEE_ID" jdbcType="VARCHAR" property="employeeId" />
+    <result column="ACCOUNT_ORDER_ID" jdbcType="VARCHAR" property="accountOrderId" />
+    <result column="ACCOUNT_TYPE" jdbcType="VARCHAR" property="accountType" />
+    <result column="MULTI_ISSUE" jdbcType="VARCHAR" property="multiIssue" />
+    <result column="CHANNEL_ID" jdbcType="BIGINT" property="channelId" />
+    <result column="SETTLEMENT_TYPE" jdbcType="VARCHAR" property="settlementType" />
+    <result column="ORDER_ID" jdbcType="VARCHAR" property="orderId" />
+    <result column="PRINT_TICKET_TYPE" jdbcType="BIT" property="printTicketType" />
+    <result column="PRINT_TICKET_STATUS" jdbcType="BIT" property="printTicketStatus" />
+    <result column="AWARD_STATUS" jdbcType="BIT" property="awardStatus" />
+    <result column="TOTAL_PRIZE" jdbcType="DECIMAL" property="totalPrize" />
+    <result column="TOTAL_TAX" jdbcType="DECIMAL" property="totalTax" />
+    <result column="BET_VIRTUAL_STATION_ID" jdbcType="VARCHAR" property="betVirtualStationId" />
+    <result column="PRINT_VIRTUAL_STATION_ID" jdbcType="VARCHAR" property="printVirtualStationId" />
+    <result column="PRINT_TIME" jdbcType="TIMESTAMP" property="printTime" />
+    <result column="FROM" jdbcType="VARCHAR" property="from" />
+    <result column="PAY_TYPE" jdbcType="VARCHAR" property="payType" />
+    <result column="TICKET_STAT" jdbcType="VARCHAR" property="ticketStat" />
+    <result column="CANCEL_TIME" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="EXPIRY_WAY" jdbcType="VARCHAR" property="expiryWay" />
+    <result column="MAINTAIN_ID" jdbcType="VARCHAR" property="maintainId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, STATION_ID, BET_NUMBER, BET_TIME, BET_MONEY, BET_ISSUE, GAME_ID, BET_RESULT, 
+    BET_MULTI, TERMINAL_CORRECT_COUNT, TICK_SN, TIME_STAMP, MAC_CODE, CORRECT_STATUS, 
+    CORRECT_TIME, CORRECT_COUNT, AGENCY_RATE, PERCENTAGE, EMPLOYEE_ID, ACCOUNT_ORDER_ID, 
+    ACCOUNT_TYPE, MULTI_ISSUE, CHANNEL_ID, SETTLEMENT_TYPE, ORDER_ID, PRINT_TICKET_TYPE, 
+    PRINT_TICKET_STATUS, AWARD_STATUS, TOTAL_PRIZE, TOTAL_TAX, BET_VIRTUAL_STATION_ID, 
+    PRINT_VIRTUAL_STATION_ID, PRINT_TIME, `FROM`, PAY_TYPE, TICKET_STAT, CANCEL_TIME, EXPIRY_WAY, 
+    MAINTAIN_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_order_info
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_order_info
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cc.jml1024.learn.service.domain.UserOrderInfo">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_order_info (USER_ID, STATION_ID, BET_NUMBER, 
+      BET_TIME, BET_MONEY, BET_ISSUE, 
+      GAME_ID, BET_RESULT, BET_MULTI, 
+      TERMINAL_CORRECT_COUNT, TICK_SN, TIME_STAMP, 
+      MAC_CODE, CORRECT_STATUS, CORRECT_TIME, 
+      CORRECT_COUNT, AGENCY_RATE, PERCENTAGE, 
+      EMPLOYEE_ID, ACCOUNT_ORDER_ID, ACCOUNT_TYPE, 
+      MULTI_ISSUE, CHANNEL_ID, SETTLEMENT_TYPE, 
+      ORDER_ID, PRINT_TICKET_TYPE, PRINT_TICKET_STATUS, 
+      AWARD_STATUS, TOTAL_PRIZE, TOTAL_TAX, 
+      BET_VIRTUAL_STATION_ID, PRINT_VIRTUAL_STATION_ID, 
+      PRINT_TIME, `FROM`, PAY_TYPE, 
+      TICKET_STAT, CANCEL_TIME, EXPIRY_WAY, 
+      MAINTAIN_ID)
+    values (#{userId,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR}, #{betNumber,jdbcType=VARCHAR}, 
+      #{betTime,jdbcType=TIMESTAMP}, #{betMoney,jdbcType=VARCHAR}, #{betIssue,jdbcType=VARCHAR}, 
+      #{gameId,jdbcType=VARCHAR}, #{betResult,jdbcType=VARCHAR}, #{betMulti,jdbcType=VARCHAR}, 
+      #{terminalCorrectCount,jdbcType=INTEGER}, #{tickSn,jdbcType=VARCHAR}, #{timeStamp,jdbcType=VARCHAR}, 
+      #{macCode,jdbcType=VARCHAR}, #{correctStatus,jdbcType=VARCHAR}, #{correctTime,jdbcType=TIMESTAMP}, 
+      #{correctCount,jdbcType=INTEGER}, #{agencyRate,jdbcType=DECIMAL}, #{percentage,jdbcType=DECIMAL}, 
+      #{employeeId,jdbcType=VARCHAR}, #{accountOrderId,jdbcType=VARCHAR}, #{accountType,jdbcType=VARCHAR}, 
+      #{multiIssue,jdbcType=VARCHAR}, #{channelId,jdbcType=BIGINT}, #{settlementType,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=VARCHAR}, #{printTicketType,jdbcType=BIT}, #{printTicketStatus,jdbcType=BIT}, 
+      #{awardStatus,jdbcType=BIT}, #{totalPrize,jdbcType=DECIMAL}, #{totalTax,jdbcType=DECIMAL}, 
+      #{betVirtualStationId,jdbcType=VARCHAR}, #{printVirtualStationId,jdbcType=VARCHAR}, 
+      #{printTime,jdbcType=TIMESTAMP}, #{from,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, 
+      #{ticketStat,jdbcType=VARCHAR}, #{cancelTime,jdbcType=TIMESTAMP}, #{expiryWay,jdbcType=VARCHAR}, 
+      #{maintainId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cc.jml1024.learn.service.domain.UserOrderInfo">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="stationId != null">
+        STATION_ID,
+      </if>
+      <if test="betNumber != null">
+        BET_NUMBER,
+      </if>
+      <if test="betTime != null">
+        BET_TIME,
+      </if>
+      <if test="betMoney != null">
+        BET_MONEY,
+      </if>
+      <if test="betIssue != null">
+        BET_ISSUE,
+      </if>
+      <if test="gameId != null">
+        GAME_ID,
+      </if>
+      <if test="betResult != null">
+        BET_RESULT,
+      </if>
+      <if test="betMulti != null">
+        BET_MULTI,
+      </if>
+      <if test="terminalCorrectCount != null">
+        TERMINAL_CORRECT_COUNT,
+      </if>
+      <if test="tickSn != null">
+        TICK_SN,
+      </if>
+      <if test="timeStamp != null">
+        TIME_STAMP,
+      </if>
+      <if test="macCode != null">
+        MAC_CODE,
+      </if>
+      <if test="correctStatus != null">
+        CORRECT_STATUS,
+      </if>
+      <if test="correctTime != null">
+        CORRECT_TIME,
+      </if>
+      <if test="correctCount != null">
+        CORRECT_COUNT,
+      </if>
+      <if test="agencyRate != null">
+        AGENCY_RATE,
+      </if>
+      <if test="percentage != null">
+        PERCENTAGE,
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID,
+      </if>
+      <if test="accountOrderId != null">
+        ACCOUNT_ORDER_ID,
+      </if>
+      <if test="accountType != null">
+        ACCOUNT_TYPE,
+      </if>
+      <if test="multiIssue != null">
+        MULTI_ISSUE,
+      </if>
+      <if test="channelId != null">
+        CHANNEL_ID,
+      </if>
+      <if test="settlementType != null">
+        SETTLEMENT_TYPE,
+      </if>
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="printTicketType != null">
+        PRINT_TICKET_TYPE,
+      </if>
+      <if test="printTicketStatus != null">
+        PRINT_TICKET_STATUS,
+      </if>
+      <if test="awardStatus != null">
+        AWARD_STATUS,
+      </if>
+      <if test="totalPrize != null">
+        TOTAL_PRIZE,
+      </if>
+      <if test="totalTax != null">
+        TOTAL_TAX,
+      </if>
+      <if test="betVirtualStationId != null">
+        BET_VIRTUAL_STATION_ID,
+      </if>
+      <if test="printVirtualStationId != null">
+        PRINT_VIRTUAL_STATION_ID,
+      </if>
+      <if test="printTime != null">
+        PRINT_TIME,
+      </if>
+      <if test="from != null">
+        `FROM`,
+      </if>
+      <if test="payType != null">
+        PAY_TYPE,
+      </if>
+      <if test="ticketStat != null">
+        TICKET_STAT,
+      </if>
+      <if test="cancelTime != null">
+        CANCEL_TIME,
+      </if>
+      <if test="expiryWay != null">
+        EXPIRY_WAY,
+      </if>
+      <if test="maintainId != null">
+        MAINTAIN_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null">
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="betNumber != null">
+        #{betNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="betTime != null">
+        #{betTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="betMoney != null">
+        #{betMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="betIssue != null">
+        #{betIssue,jdbcType=VARCHAR},
+      </if>
+      <if test="gameId != null">
+        #{gameId,jdbcType=VARCHAR},
+      </if>
+      <if test="betResult != null">
+        #{betResult,jdbcType=VARCHAR},
+      </if>
+      <if test="betMulti != null">
+        #{betMulti,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalCorrectCount != null">
+        #{terminalCorrectCount,jdbcType=INTEGER},
+      </if>
+      <if test="tickSn != null">
+        #{tickSn,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=VARCHAR},
+      </if>
+      <if test="macCode != null">
+        #{macCode,jdbcType=VARCHAR},
+      </if>
+      <if test="correctStatus != null">
+        #{correctStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="correctTime != null">
+        #{correctTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="correctCount != null">
+        #{correctCount,jdbcType=INTEGER},
+      </if>
+      <if test="agencyRate != null">
+        #{agencyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOrderId != null">
+        #{accountOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="multiIssue != null">
+        #{multiIssue,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="settlementType != null">
+        #{settlementType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="printTicketType != null">
+        #{printTicketType,jdbcType=BIT},
+      </if>
+      <if test="printTicketStatus != null">
+        #{printTicketStatus,jdbcType=BIT},
+      </if>
+      <if test="awardStatus != null">
+        #{awardStatus,jdbcType=BIT},
+      </if>
+      <if test="totalPrize != null">
+        #{totalPrize,jdbcType=DECIMAL},
+      </if>
+      <if test="totalTax != null">
+        #{totalTax,jdbcType=DECIMAL},
+      </if>
+      <if test="betVirtualStationId != null">
+        #{betVirtualStationId,jdbcType=VARCHAR},
+      </if>
+      <if test="printVirtualStationId != null">
+        #{printVirtualStationId,jdbcType=VARCHAR},
+      </if>
+      <if test="printTime != null">
+        #{printTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="from != null">
+        #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketStat != null">
+        #{ticketStat,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTime != null">
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryWay != null">
+        #{expiryWay,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainId != null">
+        #{maintainId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cc.jml1024.learn.service.domain.UserOrderInfo">
+    update user_order_info
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null">
+        STATION_ID = #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="betNumber != null">
+        BET_NUMBER = #{betNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="betTime != null">
+        BET_TIME = #{betTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="betMoney != null">
+        BET_MONEY = #{betMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="betIssue != null">
+        BET_ISSUE = #{betIssue,jdbcType=VARCHAR},
+      </if>
+      <if test="gameId != null">
+        GAME_ID = #{gameId,jdbcType=VARCHAR},
+      </if>
+      <if test="betResult != null">
+        BET_RESULT = #{betResult,jdbcType=VARCHAR},
+      </if>
+      <if test="betMulti != null">
+        BET_MULTI = #{betMulti,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalCorrectCount != null">
+        TERMINAL_CORRECT_COUNT = #{terminalCorrectCount,jdbcType=INTEGER},
+      </if>
+      <if test="tickSn != null">
+        TICK_SN = #{tickSn,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        TIME_STAMP = #{timeStamp,jdbcType=VARCHAR},
+      </if>
+      <if test="macCode != null">
+        MAC_CODE = #{macCode,jdbcType=VARCHAR},
+      </if>
+      <if test="correctStatus != null">
+        CORRECT_STATUS = #{correctStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="correctTime != null">
+        CORRECT_TIME = #{correctTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="correctCount != null">
+        CORRECT_COUNT = #{correctCount,jdbcType=INTEGER},
+      </if>
+      <if test="agencyRate != null">
+        AGENCY_RATE = #{agencyRate,jdbcType=DECIMAL},
+      </if>
+      <if test="percentage != null">
+        PERCENTAGE = #{percentage,jdbcType=DECIMAL},
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountOrderId != null">
+        ACCOUNT_ORDER_ID = #{accountOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null">
+        ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="multiIssue != null">
+        MULTI_ISSUE = #{multiIssue,jdbcType=VARCHAR},
+      </if>
+      <if test="channelId != null">
+        CHANNEL_ID = #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="settlementType != null">
+        SETTLEMENT_TYPE = #{settlementType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="printTicketType != null">
+        PRINT_TICKET_TYPE = #{printTicketType,jdbcType=BIT},
+      </if>
+      <if test="printTicketStatus != null">
+        PRINT_TICKET_STATUS = #{printTicketStatus,jdbcType=BIT},
+      </if>
+      <if test="awardStatus != null">
+        AWARD_STATUS = #{awardStatus,jdbcType=BIT},
+      </if>
+      <if test="totalPrize != null">
+        TOTAL_PRIZE = #{totalPrize,jdbcType=DECIMAL},
+      </if>
+      <if test="totalTax != null">
+        TOTAL_TAX = #{totalTax,jdbcType=DECIMAL},
+      </if>
+      <if test="betVirtualStationId != null">
+        BET_VIRTUAL_STATION_ID = #{betVirtualStationId,jdbcType=VARCHAR},
+      </if>
+      <if test="printVirtualStationId != null">
+        PRINT_VIRTUAL_STATION_ID = #{printVirtualStationId,jdbcType=VARCHAR},
+      </if>
+      <if test="printTime != null">
+        PRINT_TIME = #{printTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="from != null">
+        FROM = #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketStat != null">
+        TICKET_STAT = #{ticketStat,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTime != null">
+        CANCEL_TIME = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryWay != null">
+        EXPIRY_WAY = #{expiryWay,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainId != null">
+        MAINTAIN_ID = #{maintainId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cc.jml1024.learn.service.domain.UserOrderInfo">
+    update user_order_info
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      STATION_ID = #{stationId,jdbcType=VARCHAR},
+      BET_NUMBER = #{betNumber,jdbcType=VARCHAR},
+      BET_TIME = #{betTime,jdbcType=TIMESTAMP},
+      BET_MONEY = #{betMoney,jdbcType=VARCHAR},
+      BET_ISSUE = #{betIssue,jdbcType=VARCHAR},
+      GAME_ID = #{gameId,jdbcType=VARCHAR},
+      BET_RESULT = #{betResult,jdbcType=VARCHAR},
+      BET_MULTI = #{betMulti,jdbcType=VARCHAR},
+      TERMINAL_CORRECT_COUNT = #{terminalCorrectCount,jdbcType=INTEGER},
+      TICK_SN = #{tickSn,jdbcType=VARCHAR},
+      TIME_STAMP = #{timeStamp,jdbcType=VARCHAR},
+      MAC_CODE = #{macCode,jdbcType=VARCHAR},
+      CORRECT_STATUS = #{correctStatus,jdbcType=VARCHAR},
+      CORRECT_TIME = #{correctTime,jdbcType=TIMESTAMP},
+      CORRECT_COUNT = #{correctCount,jdbcType=INTEGER},
+      AGENCY_RATE = #{agencyRate,jdbcType=DECIMAL},
+      PERCENTAGE = #{percentage,jdbcType=DECIMAL},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      ACCOUNT_ORDER_ID = #{accountOrderId,jdbcType=VARCHAR},
+      ACCOUNT_TYPE = #{accountType,jdbcType=VARCHAR},
+      MULTI_ISSUE = #{multiIssue,jdbcType=VARCHAR},
+      CHANNEL_ID = #{channelId,jdbcType=BIGINT},
+      SETTLEMENT_TYPE = #{settlementType,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      PRINT_TICKET_TYPE = #{printTicketType,jdbcType=BIT},
+      PRINT_TICKET_STATUS = #{printTicketStatus,jdbcType=BIT},
+      AWARD_STATUS = #{awardStatus,jdbcType=BIT},
+      TOTAL_PRIZE = #{totalPrize,jdbcType=DECIMAL},
+      TOTAL_TAX = #{totalTax,jdbcType=DECIMAL},
+      BET_VIRTUAL_STATION_ID = #{betVirtualStationId,jdbcType=VARCHAR},
+      PRINT_VIRTUAL_STATION_ID = #{printVirtualStationId,jdbcType=VARCHAR},
+      PRINT_TIME = #{printTime,jdbcType=TIMESTAMP},
+      FROM = #{from,jdbcType=VARCHAR},
+      PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      TICKET_STAT = #{ticketStat,jdbcType=VARCHAR},
+      CANCEL_TIME = #{cancelTime,jdbcType=TIMESTAMP},
+      EXPIRY_WAY = #{expiryWay,jdbcType=VARCHAR},
+      MAINTAIN_ID = #{maintainId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getListBy" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM user_order_info u,
+    (
+        SELECT
+            uof.id as temp_id
+        FROM
+            user_order_info uof
+        ORDER BY uof.id DESC
+    ) AS temp
+    WHERE temp.temp_id = u.id
+    ORDER BY u.id DESC
+  </select>
+
+  <select id="getListByCount"  resultType="java.lang.Long">
+    SELECT COUNT(ID)
+    FROM user_order_info
+  </select>
+</mapper>

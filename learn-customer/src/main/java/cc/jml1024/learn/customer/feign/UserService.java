@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@FeignClient(value = "learn-service")
+@FeignClient("learn-service")
 @RequestMapping("/user")
 public interface UserService {
 
