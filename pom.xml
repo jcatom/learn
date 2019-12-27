@@ -16,6 +16,7 @@
         <module>learn-customer</module>
         <module>learn-eureka</module>
         <module>learn-security</module>
+        <module>learn-mvc</module>
     </modules>
 
 
