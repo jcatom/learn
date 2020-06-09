@@ -2,6 +2,7 @@ package cc.jml1024.learn.service.controller;
 
 import cc.jml1024.learn.api.entity.User;
 import cc.jml1024.learn.api.service.UserService;
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class UserController {
 
     @GetMapping("/list")
     public List<User> getUserList() {
-        logger.info("server name:[{}], server port:[{}]", appName, port);
+        logger.info("server name:[{}], server port:[{}]", JSON.toJSON(appName), port);
         return userService.getResultList();
     }
 

@@ -2,17 +2,20 @@ package cc.jml1024.learn.customer.feign;
 
 import cc.jml1024.learn.api.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @FeignClient("learn-service")
-@RequestMapping("/user")
 public interface UserService {
 
-    @RequestMapping("/count")
+    @GetMapping("/user/count")
     int getCount();
 
-    @RequestMapping("list")
+    @GetMapping("/user/list")
     List<User> getResultList();
+
+    @GetMapping("/userOrderInfo/{id}")
+    Object getById(@PathVariable("id")  Long id);
 }
