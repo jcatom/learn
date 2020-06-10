@@ -1,7 +1,7 @@
 package cc.jml1024.learn.customer.controller;
 
 
-import cc.jml1024.learn.customer.feign.UserService;
+import cc.jml1024.learn.customer.feign.UserOrderInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,11 @@ public class UserOrderInfoController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private UserService userService;
+    private UserOrderInfoService userOrderInfoService;
 
     @GetMapping("/get/{id}")
     public Object getById(@PathVariable Long id) {
-        return userService.getById(id);
+        return userOrderInfoService.getById(id);
     }
 
 }
