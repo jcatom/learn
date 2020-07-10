@@ -506,7 +506,7 @@
     where ID = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="getListBy" resultMap="BaseResultMap">
+  <select id="getListBy" resultMap="BaseResultMap" parameterType="cc.jml1024.learn.api.qry.UserOrderInfoQry">
     SELECT <include refid="Base_Column_List"/>
     FROM user_order_info u,
     (
@@ -514,6 +514,11 @@
             uof.id as temp_id
         FROM
             user_order_info uof
+        <where>
+          <if test="stationId != null and stationId != ''">
+            AND uof.STATION_ID = #{station}
+          </if>
+        </where>
         ORDER BY uof.id DESC
     ) AS temp
     WHERE temp.temp_id = u.id

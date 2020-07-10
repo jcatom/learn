@@ -1,5 +1,6 @@
 package cc.jml1024.learn.service.dao;
 
+import cc.jml1024.learn.api.qry.UserOrderInfoQry;
 import cc.jml1024.learn.service.domain.UserOrderInfo;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +20,7 @@ public interface UserOrderInfoMapper {
 
     int updateByPrimaryKey(UserOrderInfo record);
 
-    List<UserOrderInfo> getListBy();
+    List<UserOrderInfo> getListBy(UserOrderInfoQry qry);
 
     public Long getListByCount();
 }

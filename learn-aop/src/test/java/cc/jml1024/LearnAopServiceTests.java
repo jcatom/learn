@@ -19,9 +19,13 @@ public class LearnAopServiceTests {
 	@Autowired
 	private LearnAopServiceImpl learnAopService;
 
+
 	@Test
 	public void test_sayHello() throws Exception {
 		learnAopService.sayHello("Evil");
+
+
+		System.out.println(learnAopService);
 	}
 
 }
