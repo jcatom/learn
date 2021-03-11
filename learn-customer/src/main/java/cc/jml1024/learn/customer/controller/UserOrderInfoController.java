@@ -1,6 +1,8 @@
 package cc.jml1024.learn.customer.controller;
 
 
+import cc.jml1024.learn.api.dto.UserOrderInfoDTO;
+import cc.jml1024.learn.api.response.ResultResponse;
 import cc.jml1024.learn.customer.feign.UserOrderInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +21,7 @@ public class UserOrderInfoController {
     private UserOrderInfoService userOrderInfoService;
 
     @GetMapping("/get/{id}")
-    public Object getById(@PathVariable Long id) {
+    public ResultResponse<UserOrderInfoDTO> getById(@PathVariable Long id) {
         return userOrderInfoService.getById(id);
     }
 

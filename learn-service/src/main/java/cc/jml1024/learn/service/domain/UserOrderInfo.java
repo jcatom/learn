@@ -1,11 +1,8 @@
 package cc.jml1024.learn.service.domain;
 
-import org.springframework.data.elasticsearch.annotations.Document;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Document(indexName = "gogs", type = "userOrderInfo")
 public class UserOrderInfo {
     private Long id;
 
