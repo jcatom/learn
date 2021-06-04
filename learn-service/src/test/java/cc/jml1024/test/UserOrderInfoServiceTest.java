@@ -3,7 +3,6 @@ package cc.jml1024.test;
 import cc.jml1024.learn.service.ApplicationStartup;
 import cc.jml1024.learn.service.domain.UserOrderInfo;
 import cc.jml1024.learn.service.service.UserOrderInfoService;
-import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -40,7 +39,7 @@ public class UserOrderInfoServiceTest {
     public void test_getListBy() {
         List<UserOrderInfo> list = userOrderInfoService.getListBy(null);
         list.forEach(u -> {
-                logger.info("info: [{}]", JSON.toJSON(u));
+                logger.info("info: [{}]", u);
         });
     }
 }
