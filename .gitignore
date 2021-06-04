@@ -4,3 +4,6 @@ learn-api/target/
 learn-eureka/target/
 *.iml
 learn-security/target/
+learn-mvc/target/
+learn-aop/target/
+learn-elasticsearch/target/
