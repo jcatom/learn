@@ -3,7 +3,6 @@ package cc.jml1024.learn.customer.controller;
 
 import cc.jml1024.learn.api.entity.User;
 import cc.jml1024.learn.customer.feign.UserService;
-import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ public class UserController {
     public List<User> getRelustList() {
         List<User> list = userService.getResultList();
         list.forEach(u -> {
-            logger.info("user info: [{}]", JSON.toJSON(u));
         });
         return list;
     }
