@@ -40,7 +40,7 @@ public class UserOrderInfoController {
         return response;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public ResultResponse getById(@PathVariable("id") Long id) {
         UserOrderInfo info = userOrderInfoService.getById(id);
         UserOrderInfoDTO dto = new UserOrderInfoDTO();
