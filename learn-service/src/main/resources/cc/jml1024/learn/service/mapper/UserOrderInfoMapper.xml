@@ -442,7 +442,7 @@
         PRINT_TIME = #{printTime,jdbcType=TIMESTAMP},
       </if>
       <if test="from != null">
-        FROM = #{from,jdbcType=VARCHAR},
+        `FROM` = #{from,jdbcType=VARCHAR},
       </if>
       <if test="payType != null">
         PAY_TYPE = #{payType,jdbcType=VARCHAR},

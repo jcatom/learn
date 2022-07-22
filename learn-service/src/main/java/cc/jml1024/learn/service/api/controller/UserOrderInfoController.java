@@ -6,17 +6,20 @@ import cc.jml1024.learn.api.qry.UserOrderInfoQry;
 import cc.jml1024.learn.api.response.ResultResponse;
 import cc.jml1024.learn.service.domain.UserOrderInfo;
 import cc.jml1024.learn.service.service.UserOrderInfoService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/userOrderInfos")
+@RequestMapping("/userOrderInfo")
 public class UserOrderInfoController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
@@ -56,6 +59,20 @@ public class UserOrderInfoController {
             response = new ResultResponse<>(ResponseCode.FAILED);
         }
         return response;
+    }
+
+    @GetMapping(value = "/update")
+    @Transactional
+    public int update() throws Exception {
+        UserOrderInfo userOrderInfo = userOrderInfoService.getById(50404846L);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("订单记录更新前的结果:[{}]", mapper.writeValueAsString(userOrderInfo));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        userOrderInfo.setStationId("45050000");
+        return userOrderInfoService.update(userOrderInfo);
     }
 
 }

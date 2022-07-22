@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface UserOrderInfoService {
 
+    int update(UserOrderInfo userOrderInfo) throws Exception;
+
     UserOrderInfo getById(Long id);
 
     List<UserOrderInfo> getListBy(UserOrderInfoQry qry);
